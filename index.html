@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Packaging Rendang</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Scan Label Indikator (Foto Kamera)</h1>
+    <input type="file" accept="image/*" capture="environment" onchange="handleImageUpload(event)">
+    <canvas id="uploadedCanvas" style="display:none;"></canvas>
+
+    <div id="preview">
+      <p>Warna Dominan Terdeteksi:</p>
+      <div id="colorBox" style="width:50px;height:50px;margin:auto;border-radius:6px;border:1px solid #ccc;"></div>
+    </div>
+
+    <div id="quality"></div>
+    <div id="price"></div>
+
+    <div id="history" style="margin-top:2rem;">
+      <h2>Riwayat Scan</h2>
+      <ul id="historyList" style="text-align:left; max-height:200px; overflow-y:auto; padding-left:0;"></ul>
+    </div>
+
+    <div id="generator">
+      <h2>Generate QR dari Nilai RGB</h2>
+      <input type="number" id="r" placeholder="R (0-255)" min="0" max="255">
+      <input type="number" id="g" placeholder="G (0-255)" min="0" max="255">
+      <input type="number" id="b" placeholder="B (0-255)" min="0" max="255">
+      <button onclick="generateQR()">Buat QR</button>
+      <button onclick="generateQRFromLastScan()">QR dari Scan Terakhir</button>
+      <canvas id="qrCanvas"></canvas>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
